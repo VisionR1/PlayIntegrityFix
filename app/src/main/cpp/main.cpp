@@ -8,7 +8,7 @@
 #include <algorithm>
 
 #include "zygisk.hpp"
-#include "json/single_include/nlohmann/json.hpp"
+#include "json.hpp" // Changed to just json.hpp
 #include "dobby.h"
 
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, "PIF/Native", __VA_ARGS__)
@@ -44,7 +44,7 @@ static void readTargetList() {
     }
 }
 
-static void modify_callback(void *cookie, const char *name, const char *value, uint32_t serial) {
+static void modify_callback(void *cookie, const char *name, const char *value, uint32t serial) {
     if (cookie == nullptr || name == nullptr || value == nullptr || !callbacks.contains(cookie)) return;
 
     const char *oldValue = value;
